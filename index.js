@@ -13,6 +13,10 @@ export default (app) => {
     return context.octokit.issues.createComment(issueComment);
   });
 
+  app.onAny(async (context) => {
+    app.log.info({ event: context.name, action: context.payload.action });
+  });
+
   // For more information on building apps:
   // https://probot.github.io/docs/
 
